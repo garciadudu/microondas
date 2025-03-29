@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=benner@22025
+    ports:
+      - "1433:1433"
+      - "1434:1434"
+    volumes:             
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

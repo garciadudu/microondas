@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  app:
+    image: ubuntu
+    command: bash -c "ping google.com"
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=benner@22025
+      - MSSQL_SA_PASSWORD=benner@22025
+    ports:
+      - "1433:1433"
+    volumes:
+     - ./init:/docker-entrypoint-initdb.d
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    hostname: "meu-sqlserver:192.168.1.100"
+networks:
+  default:
+    driver: bridge

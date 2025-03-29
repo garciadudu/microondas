@@ -1,0 +1,6 @@
+@Benner.DeveloperEvaluation.WebApi_HostAddress = http://localhost:5083
+
+GET {{Benner.DeveloperEvaluation.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
